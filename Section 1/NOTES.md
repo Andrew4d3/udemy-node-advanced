@@ -13,3 +13,24 @@
 - Threads are units of instruction that are waiting to be executed by the CPU 
 - Deciding which order to execute these threads is referred to as scheduling. Scheduling is controlled by your operating system.
 - Two ways of improving the rate at which we process threads is to either add moreCPU cores to our machine or to allow our OS scheduler to detect big pauses in processing time due to expensive input and output operations.
+## The Node Event Loop
+- You can think of the event loop as being like a control structure that decides what our one thread should be doing at any given point in time.
+ - This event loop is the absolute core of every program that you and I run and every program that you and I run has exactly one event loop.
+- Understanding how the event loop works is extremely important because a lot of performance concerns about node boiled down to eventually how the event loop behaves.
+- We will understand how the event loop works using some pseudo-code:
+```
+# (starting the node script)
+$node myFile.js
+
+myFile.runContents(); // This function will run the file content
+
+// This function determines whether the event loop can continue or not. 
+function shouldContinue() {
+}
+
+// This while loop represents the Event loop
+// The entire body executes in one "tick"
+while(shouldContinue()) {
+
+}
+```
