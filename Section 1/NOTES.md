@@ -22,10 +22,19 @@
 # (starting the node script)
 $node myFile.js
 
+const pendingTimers = [];
+const pendingOSTasks = [];
+const pendingOperations = [];
+
+// New timers, tasks, operations are recorde from myFile running
 myFile.runContents(); // This function will run the file content
 
 // This function determines whether the event loop can continue or not. 
 function shouldContinue() {
+ // Check one: Any pending setTimeout, setInterval, setImmediate?
+ // Check two: Any pending OS tasks? (Like server listening to port)
+ // Chec three: Any pending long running operations? (Like fs module - filesystem)
+ return pendingTimers.length || pendingOSTasks.length || pendingOperations.length
 }
 
 // This while loop represents the Event loop
