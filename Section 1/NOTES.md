@@ -66,6 +66,7 @@ while(shouldContinue()) {
 ## Is Node Single Threaded?
 - Many people claim that NodeJS is single threaded. Reason why some developers avoid using it for highly intensive CPU operations. But this is not entirely true.
 - The Node Event loop is in fact Single threaded but some Node Framework/std libraried can work using multiple threads.
+![Diagram](https://snag.gy/hzHRLJ.jpg)
 - We will demostrate this using the following script:
 Example
 
