@@ -82,3 +82,10 @@ while(shouldContinue()) {
 - The Node Event loop is in fact Single threaded but some Node Framework/std libraries can work using multiple threads.
   ![Diagram](https://snag.gy/hzHRLJ.jpg)
 - We will demostrate this using the following script: [threads.js](https://github.com/Andrew4d3/udemy-node-advanced/blob/master/section-1/threads.js)
+
+- If node was single threaded, this would happen
+![image](https://user-images.githubusercontent.com/1868409/57901629-f3c5c300-7833-11e9-97a5-e6d5677e8b58.png)
+- But instead, this is happening
+![image](https://user-images.githubusercontent.com/1868409/57901778-6767d000-7834-11e9-8e3b-e639a1127480.png)
+
+So why is that?
