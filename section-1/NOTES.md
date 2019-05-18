@@ -88,4 +88,7 @@ while(shouldContinue()) {
 - But instead, this is happening
 ![image](https://user-images.githubusercontent.com/1868409/57901778-6767d000-7834-11e9-8e3b-e639a1127480.png)
 
-So why is that?
+### So why is that?
+- Do you remember the libuv library? That library has among its responsabilities to manage a thread pool which is used for **some** (an the keyword here is some!) standard funtions of NodeJS.
+![image](https://user-images.githubusercontent.com/1868409/57973487-5e334c00-7977-11e9-90e9-295d0ec3a00e.png)
+
