@@ -91,4 +91,10 @@ while(shouldContinue()) {
 ### So why is that?
 - Do you remember the libuv library? That library has among its responsabilities to manage a thread pool which is used for **some** (an the keyword here is some!) standard funtions of NodeJS.
 ![image](https://user-images.githubusercontent.com/1868409/57973487-5e334c00-7977-11e9-90e9-295d0ec3a00e.png)
+- We can prove this whith an experiment. Run the thread.js script. Depending on you machine you will see a different result. But for a Macbook pro with 2 cores and multi-threading enable, the result will be something like this:
+![image](https://user-images.githubusercontent.com/1868409/57975529-ce05fe80-7998-11e9-976b-1ca9d8084c23.png)
+- Notice how the first 4 calls run in paralell, but the fifth call waits for a thread to be available, so it's gonna take it a little bit more of time. This is a more comprehensive way of what it's happening:
+![image](https://user-images.githubusercontent.com/1868409/57975558-4f5d9100-7999-11e9-8b49-cc3d1f0bd988.png)
+
+
 
