@@ -102,3 +102,8 @@ while(shouldContinue()) {
 ## Common Threadpool questions
 ![image](https://user-images.githubusercontent.com/1868409/57976416-6908d380-79ad-11e9-9d9e-ef2b2b20d4d6.png)
 
+## Explaining OS Operations
+- When it comes to OS operations, things behave differently. Check and run the script found [here](https://github.com/Andrew4d3/udemy-node-advanced/blob/1e64d8556083c2f2caa60cb0425713b48f0d7153/section-1/async.js)
+- All the https calls run in paralell, and there are more than four (the default threadpool size). This happens because OS operations (like HTTP calls) will be delegated to a low level layer from the OS.
+![image](https://user-images.githubusercontent.com/1868409/57976560-1e895600-79b1-11e9-9ce8-fa933cb6d68f.png)
+- Neither libuv nor any Node or C++ module will take care of the HTTP request. Everything will delegated the OS itself, which will perform the thread scheduling if it's required.
