@@ -99,6 +99,6 @@ while(shouldContinue()) {
 
 ![image](https://user-images.githubusercontent.com/1868409/57976351-ad936f80-79ab-11e9-9ecc-42af8d6a9152.png)
 
-
-
+## Common Threadpool questions
+![image](https://user-images.githubusercontent.com/1868409/57976416-6908d380-79ad-11e9-9d9e-ef2b2b20d4d6.png)
 
