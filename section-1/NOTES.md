@@ -96,6 +96,7 @@ while(shouldContinue()) {
 - Notice how the first 4 calls run in paralell, but the fifth call waits for a thread to be available, so it's gonna take it a little bit more of time. This is a more comprehensive way of what it's happening:
 ![image](https://user-images.githubusercontent.com/1868409/57975558-4f5d9100-7999-11e9-8b49-cc3d1f0bd988.png)
 - Now let's try changing the threadpool size. Check and run the thread.js file [here](https://github.com/Andrew4d3/udemy-node-advanced/blob/94448db0dd88332663439ebd80bd0357a25f0e62/section-1/threads.js). You will see a different behavior similar to this:
+
 ![image](https://user-images.githubusercontent.com/1868409/57976351-ad936f80-79ab-11e9-9ecc-42af8d6a9152.png)
 
 
