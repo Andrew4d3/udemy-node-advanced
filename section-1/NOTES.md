@@ -107,3 +107,6 @@ while(shouldContinue()) {
 - All the https calls run in paralell, and there are more than four (the default threadpool size). This happens because OS operations (like HTTP calls) will be delegated to a low level layer from the OS.
 ![image](https://user-images.githubusercontent.com/1868409/57976560-1e895600-79b1-11e9-9ce8-fa933cb6d68f.png)
 - Neither libuv nor any Node or C++ module will take care of the HTTP request. Everything will delegated the OS itself, which will perform the thread scheduling if it's required.
+
+# OS Async Common Questions
+![image](https://user-images.githubusercontent.com/1868409/57989536-eb56cd80-7a69-11e9-98c7-2a4da97878c3.png)
