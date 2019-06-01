@@ -23,9 +23,9 @@ NOTE: It's not an experimental feature for Node >= 11.11.0
 
 ## Clustering in Action
 
-- Check the example [Here](Link) to see what we need to do in order to run our app in "Cluster Mode"
+- Check the example [Here](https://github.com/Andrew4d3/udemy-node-advanced/blob/114d533b19e0c5470e02b9f53066eedea77e3ad0/section-2/index.js) to see what we need to do in order to run our app in "Cluster Mode"
 - In the exaple above, we are lifting 4 worker instances.
-- Let's test this by running again our server but with some modifications. We will define a second path, that won't take any time to respond back. Check code [Here](Link).
+- Let's test this by running again our server but with some modifications. We will define a second path, that won't take any time to respond back. Check code [Here](https://github.com/Andrew4d3/udemy-node-advanced/blob/114d533b19e0c5470e02b9f53066eedea77e3ad0/section-2/index.js).
 - Now if you try to run both paths in paralell, you will notice how the second path will respond inmediatly. Even though, the first path is still waiting to respond. This is happening because we are using a different worker for the second path.
 - You can check how this node app will behave if there was just one worker running. Just change the `i` value from the `for` statement to 1 (so only one worker runs) Now if you try to run both requests in paralell, you will notice how the "fast" path will not respond inmediately anymore.
 - This is a marble diagram that explains what happens (R means "response", A means "worker available") :
