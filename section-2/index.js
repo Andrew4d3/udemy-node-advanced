@@ -2,8 +2,10 @@ const cluster = require("cluster");
 
 // We ask if this is executed in cluster mode
 if (cluster.isMaster) {
-  // If that's the case. Index.js will run in "slave mode"
-  cluster.fork();
+  // Here we creates 4 worker instances
+  for (let i = 0; i < 4; i++) {
+    cluster.fork();
+  }
 } else {
   // This is a child now, and will run normally
   const express = require("express");
@@ -17,6 +19,10 @@ if (cluster.isMaster) {
   app.get("/", (req, res) => {
     doWork(5000);
     res.send("Hi there");
+  });
+
+  app.get("/fast", (req, res) => {
+    res.send("That was fast!");
   });
 
   app.listen(3000);
