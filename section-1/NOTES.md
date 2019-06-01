@@ -84,32 +84,42 @@ while(shouldContinue()) {
 - We will demostrate this using the following script: [threads.js](https://github.com/Andrew4d3/udemy-node-advanced/blob/4a46fc8844782d80fb4c4a7ca6a43d695cc6cd65/section-1/threads.js)
 
 - If node was single threaded, this would happen
-![image](https://user-images.githubusercontent.com/1868409/57901629-f3c5c300-7833-11e9-97a5-e6d5677e8b58.png)
+  ![image](https://user-images.githubusercontent.com/1868409/57901629-f3c5c300-7833-11e9-97a5-e6d5677e8b58.png)
 - But instead, this is happening
-![image](https://user-images.githubusercontent.com/1868409/57901778-6767d000-7834-11e9-8e3b-e639a1127480.png)
+  ![image](https://user-images.githubusercontent.com/1868409/57901778-6767d000-7834-11e9-8e3b-e639a1127480.png)
 
 ### So why is that?
+
 - Do you remember the libuv library? That library has among its responsabilities to manage a thread pool which is used for **some** (an the keyword here is some!) standard funtions of NodeJS.
-![image](https://user-images.githubusercontent.com/1868409/57973487-5e334c00-7977-11e9-90e9-295d0ec3a00e.png)
+  ![image](https://user-images.githubusercontent.com/1868409/57973487-5e334c00-7977-11e9-90e9-295d0ec3a00e.png)
 - We can prove this whith an experiment. Run this [thread.js](https://github.com/Andrew4d3/udemy-node-advanced/blob/194e48b278ef8437850ec7d5d761cdc30b34ed89/section-1/threads.js) script. Depending on you machine you will see a different result. But for a Macbook pro with 2 cores and multi-threading enable, the result will be something like this:
-![image](https://user-images.githubusercontent.com/1868409/57975529-ce05fe80-7998-11e9-976b-1ca9d8084c23.png)
+  ![image](https://user-images.githubusercontent.com/1868409/57975529-ce05fe80-7998-11e9-976b-1ca9d8084c23.png)
 - Notice how the first 4 calls run in paralell, but the fifth call waits for a thread to be available, so it's gonna take it a little bit more of time. This is a more comprehensive way of what it's happening:
-![image](https://user-images.githubusercontent.com/1868409/57975558-4f5d9100-7999-11e9-8b49-cc3d1f0bd988.png)
+  ![image](https://user-images.githubusercontent.com/1868409/57975558-4f5d9100-7999-11e9-8b49-cc3d1f0bd988.png)
 - Now let's try changing the threadpool size. Check and run the thread.js file [here](https://github.com/Andrew4d3/udemy-node-advanced/blob/94448db0dd88332663439ebd80bd0357a25f0e62/section-1/threads.js). You will see a different behavior similar to this:
 
 ![image](https://user-images.githubusercontent.com/1868409/57976351-ad936f80-79ab-11e9-9ecc-42af8d6a9152.png)
 
 ## Common Threadpool questions
+
 ![image](https://user-images.githubusercontent.com/1868409/57976416-6908d380-79ad-11e9-9d9e-ef2b2b20d4d6.png)
 
 ## Explaining OS Operations
+
 - When it comes to OS operations, things behave differently. Check and run the script found [here](https://github.com/Andrew4d3/udemy-node-advanced/blob/1e64d8556083c2f2caa60cb0425713b48f0d7153/section-1/async.js)
 - All the https calls run in paralell, and there are more than four (the default threadpool size). This happens because OS operations (like HTTP calls) will be delegated to a low level layer from the OS.
-![image](https://user-images.githubusercontent.com/1868409/57976560-1e895600-79b1-11e9-9ce8-fa933cb6d68f.png)
+  ![image](https://user-images.githubusercontent.com/1868409/57976560-1e895600-79b1-11e9-9ce8-fa933cb6d68f.png)
 - Neither libuv nor any Node or C++ module will take care of the HTTP request. Everything will delegated the OS itself, which will perform the thread scheduling if it's required.
 
 ## OS Async Common Questions
+
 ![image](https://user-images.githubusercontent.com/1868409/57989536-eb56cd80-7a69-11e9-98c7-2a4da97878c3.png)
 
 ## Review
+
 ![image](https://user-images.githubusercontent.com/1868409/57989575-8bacf200-7a6a-11e9-99f5-12fb055db961.png)
+
+## Unexpected Event Loop Events
+
+- HTTP operations seem to happen right away because they don't take place inside the threadpool. Instead, they are delegated to the OS.
+- FS operations do take place inside the threadpool, but since they can take a considerble time to complete. Usually, an FS operation will release before completition so that it can be used by other operation. Once the Hard drive responses, it will take a thread again.
