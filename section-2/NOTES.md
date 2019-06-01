@@ -6,5 +6,5 @@ NOTE: It's not an experimental feature for Node >= 11.11.0
 
 ## Blocking the Event Loop
 
-- If we want to block the event we just have to add a while loop and force it to run for a specific amount of time. [Here](LinkHere) there's an example
-- If we try to make two request separately, we will notice how one takes 5s and the second one a little bit more. That's because the second one will wait for the event loop to be available again.
+- If we want to block the event we just have to add a while loop and force it to run for a specific amount of time. [Here](https://github.com/Andrew4d3/udemy-node-advanced/blob/master/section-2/index.js) there's an example
+- If we run the server and try to make two request separately, we will notice how one takes 5s and the second one a little bit more. That's because the second one will wait for the event loop to be available again.
