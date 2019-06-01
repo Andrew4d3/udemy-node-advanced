@@ -1,0 +1,27 @@
+{
+  "name": "udemy-node-advanced",
+  "version": "1.0.0",
+  "description": "Udemy Node Advanced Course Notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andrew4d3/udemy-node-advanced.git"
+  },
+  "keywords": [
+    "node",
+    "course",
+    "notes"
+  ],
+  "author": "Andrew4d3",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Andrew4d3/udemy-node-advanced/issues"
+  },
+  "homepage": "https://github.com/Andrew4d3/udemy-node-advanced#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
