@@ -113,3 +113,8 @@ Percentage of the requests served within a certain time (ms)
 ```
 
 Here you chaeck some interesting data like "Time per request", "Request per second" among others.
+
+## Benchmark Refactor
+
+- Blocking the event loop using a `while` during can be useful at times. But if we really want to benchmark how our apps behaves under high CPU load, it's better to use other functions, like the `pbkdf2` function we used in the past section. Let's modify our code [here](link):
+- Now we're calling the `pbkdf2` function instead of the `while` statement. Besides, we're setting the threadpool size to 1 and limiting the number of workers to only 1 as well.

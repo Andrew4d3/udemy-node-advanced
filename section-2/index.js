@@ -1,9 +1,10 @@
+process.env.UV_THREADPOOL_SIZE = 1;
 const cluster = require("cluster");
 
 // We ask if this is executed in cluster mode
 if (cluster.isMaster) {
-  // Here we creates 4 worker instances
-  for (let i = 0; i < 4; i++) {
+  // Let's limit our worker creation to only one
+  for (let i = 0; i < 1; i++) {
     cluster.fork();
   }
 } else {
@@ -11,14 +12,10 @@ if (cluster.isMaster) {
   const express = require("express");
   const app = express();
 
-  function doWork(duration) {
-    const start = Date.now();
-    while (Date.now() - start < duration) {}
-  }
-
   app.get("/", (req, res) => {
-    doWork(5000);
-    res.send("Hi there");
+    crypto.pbkdf2("a", "b", 100000, 512, "sha512", () => {
+      res.send("Hi there");
+    });
   });
 
   app.get("/fast", (req, res) => {
