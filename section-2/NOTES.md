@@ -116,5 +116,5 @@ Here you chaeck some interesting data like "Time per request", "Request per seco
 
 ## Benchmark Refactor
 
-- Blocking the event loop using a `while` during a time span can be useful at times. But if we really want to benchmark how our apps behaves under high CPU load, it's better to use other functions, like the `pbkdf2` function we used in the past section. Let's modify our code [here](https://github.com/Andrew4d3/udemy-node-advanced/blob/659cf58309a76ef34d439bf174f04ae4372d0e16/section-2/index.js):
+- Blocking the event loop using a `while` during a time span can be useful at times. But if we really want to benchmark how our app behaves under high CPU load, it's better to use other functions, like the `pbkdf2` function we used in the past section. Let's modify our code [here](https://github.com/Andrew4d3/udemy-node-advanced/blob/659cf58309a76ef34d439bf174f04ae4372d0e16/section-2/index.js):
 - Now we're calling the `pbkdf2` function instead of the `while` statement. Besides, we're setting the threadpool size to 1 and limiting the number of workers to only 1 as well.
