@@ -43,3 +43,73 @@ path / takes one worker
 path /fast waits for the only worker to be available (A)
 |-------------(A)--(R)
 ```
+
+## Benchmarking Server Performance
+
+So far, we have been checking the performance of our server using the browser and refreshing pages. But we would like to have a more "scientific" way to do this:
+We're going to use "ab" or "Apache benchmarks". If you don't have it installed, just enter this command into the terminal:
+
+```
+$ sudo apt install apache2-utils
+```
+
+After it ends installing and while you're running the server go a do this (again, in the terminal):
+
+```
+$ ab -c 50 -n 500 localhost:3000/fast
+```
+
+You will see some results like these ones:
+
+```
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Finished 500 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /fast
+Document Length:        14 bytes
+
+Concurrency Level:      50
+Time taken for tests:   0.121 seconds
+Complete requests:      500
+Failed requests:        0
+Total transferred:      106500 bytes
+HTML transferred:       7000 bytes
+Requests per second:    4121.20 [#/sec] (mean)
+Time per request:       12.132 [ms] (mean)
+Time per request:       0.243 [ms] (mean, across all concurrent requests)
+Transfer rate:          857.24 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.4      0       2
+Processing:     5   11   9.6      8      43
+Waiting:        5   11   9.6      8      43
+Total:          6   12  10.0      8      44
+
+Percentage of the requests served within a certain time (ms)
+  50%      8
+  66%      9
+  75%     10
+  80%     10
+  90%     36
+  95%     42
+  98%     43
+  99%     43
+ 100%     44 (longest request)
+```
+
+Here you chaeck some interesting data like "Time per request", "Request per second" among others.
